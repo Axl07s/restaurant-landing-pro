@@ -1,5 +1,4 @@
-import React from 'react';
-import { ChefHat, Utensils, Clock, MapPin, Phone, Instagram, Facebook, Calendar, ChevronRight } from 'lucide-react';
+import { Clock, MapPin, Phone, Calendar, ChevronRight } from 'lucide-react';
 
 export default function App() {
   return (
@@ -88,7 +87,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer / Footer pseudo-component */}
+      {/* Footer */}
       <footer className="bg-[#050302] border-t border-white/5 pt-20 pb-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 text-brand-300 font-light">
           <div className="col-span-1 md:col-span-2">
