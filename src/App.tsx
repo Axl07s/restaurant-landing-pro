@@ -426,6 +426,63 @@ export default function App() {
         </div>
       )}
 
+      {/* Philosophy Section */}
+      <section id="filosofia" className="py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        <div className="rounded-3xl border border-amber-950/60 bg-gradient-to-b from-zinc-900/60 via-zinc-950/80 to-[#060403] p-8 sm:p-14 lg:p-20 shadow-2xl backdrop-blur-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-600/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="max-w-3xl space-y-6">
+            <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20">
+              Nuestra Filosofía
+            </span>
+            
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.15]">
+              La Alquimia del Fuego <br />
+              <span className="italic font-light text-amber-200/90">&amp; la Memoria Ancestral.</span>
+            </h2>
+
+            <p className="text-base sm:text-lg text-zinc-300 font-light leading-relaxed">
+              En KURE no concebimos la gastronomía como un espectáculo efímero, sino como un diálogo riguroso entre la geografía de los Andes, la feracidad de la Amazonía y el misterio del Océano Pacífico.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-12 border-t border-zinc-800/80">
+            <div className="space-y-3">
+              <span className="text-amber-400 font-mono text-xs font-bold uppercase tracking-wider block">01 / Origen Trazable</span>
+              <h3 className="text-xl font-serif font-bold text-white">4 Ecosistemas Nativos</h3>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Trabajamos en simbiosis directa con pescadores artesanales de Manabí, recolectores de cacao fino de aroma en Los Ríos y comunidades andinas que cultivan papas nativas milenarias.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <span className="text-amber-400 font-mono text-xs font-bold uppercase tracking-wider block">02 / Dominio Técnico</span>
+              <h3 className="text-xl font-serif font-bold text-white">Fuego Vivo &amp; Ciencia</h3>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Brasa viva con leña de canelo y eucalipto aromático, complementada con técnicas criogénicas, fermentaciones en vasijas de barro y reducciones pacientes de 48 horas.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <span className="text-amber-400 font-mono text-xs font-bold uppercase tracking-wider block">03 / Sostenibilidad</span>
+              <h3 className="text-xl font-serif font-bold text-white">Compromiso Circular</h3>
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Aprovechamiento integral del producto bajo el principio de residuo cero. Desde las cenizas vegetales hasta las infusiones botánicas de nuestra cava privada.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 p-6 rounded-2xl bg-zinc-950/80 border border-amber-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-sm font-serif italic text-amber-200/90">
+              "Cocinar no es alimentar; es rescatar del olvido los sabores que forjaron nuestra identidad y llevarlos al mañana."
+            </p>
+            <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest shrink-0 font-semibold">
+              &mdash; Chef Ejecutivo KURE
+            </span>
+          </div>
+        </div>
+      </section>
+
       {/* Ambiances / Zones Showcase */}
       <section id="zonas" className="py-24 bg-zinc-950 border-y border-zinc-800/80">
         <div className="max-w-7xl mx-auto px-6">
