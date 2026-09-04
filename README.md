@@ -1,32 +1,15 @@
-# React + TypeScript + Vite
+# KURE Gastronomy Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**KURE** is a premium, interactive web platform designed for fine dining restaurants. 
+It replaces traditional static websites with an immersive digital experience built for high-end hospitality.
 
-Currently, two official plugins are available:
+## Features
+- **Interactive Menu Browser**: Categorized by Entradas, Platos Fuertes, Vinos, and Postres.
+- **Detailed Dish Modals**: Tasting notes, ingredient sourcing, and wine pairings.
+- **Dynamic Reservation Engine**: Date, time, party size selection with real-time availability.
+- **Private Events**: Dedicated inquiry forms for corporate events and VIP rooms.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
-
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Tech Stack
+- React 18
+- Tailwind CSS
+- Lucide Icons
