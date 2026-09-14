@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://restaurant-landing-pro.vercel.app/projects/kure_01.png" alt="KURE Fine Dining Platform" width="100%" />
+  <img src="https://raw.githubusercontent.com/Axl07s/portfolio-axel/master/public/projects/kure_01.png" alt="KURE Fine Dining Platform" width="100%" />
 
   # KURE Fine Dining Platform
   **High-Conversion Hospitality Web Infrastructure**
@@ -41,4 +41,5 @@ KURE is a high-end web platform designed for the hospitality industry, featuring
 <div align="center">
   <i>Engineered for production by <a href="https://github.com/Axl07s">Axel Molineros</a>.</i>
 </div>
+
 
