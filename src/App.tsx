@@ -3,6 +3,7 @@ import {
   Clock, MapPin, Phone, Calendar, ChevronRight, Star, ChevronDown, 
   CheckCircle2, Wine, Flame, Sparkles, X, Award, ShieldCheck, Copy
 } from 'lucide-react';
+import { translations, type Language } from './translations';
 
 interface Dish {
   id: string;
@@ -105,6 +106,23 @@ const DISHES: Dish[] = [
 ];
 
 export default function App() {
+  const [lang, setLangState] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('kure_lang');
+      if (saved === 'en' || saved === 'es') return saved;
+      return navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en';
+    }
+    return 'es';
+  });
+
+  const setLang = (newLang: Language) => {
+    setLangState(newLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('kure_lang', newLang);
+    }
+  };
+
+  const t = translations[lang];
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -178,28 +196,54 @@ export default function App() {
     <div className="min-h-screen bg-[#060403] text-zinc-100 font-sans selection:bg-amber-600/30 selection:text-white">
       
       {/* Top Luxury Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#060403]/80 backdrop-blur-xl border-b border-amber-950/40">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#060403]/90 backdrop-blur-xl border-b border-amber-950/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 group">
-            <span className="font-serif text-2xl tracking-[0.25em] font-bold text-white group-hover:text-amber-200 transition-colors">
+            <span className="font-serif text-xl sm:text-2xl tracking-[0.25em] font-bold text-white group-hover:text-amber-200 transition-colors">
               KURE
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
           </a>
           
           <div className="hidden md:flex items-center space-x-10 text-xs tracking-[0.2em] uppercase font-semibold text-zinc-400">
-            <a href="#carta" className="hover:text-amber-300 transition-colors">Nuestra Carta</a>
-            <a href="#filosofia" className="hover:text-amber-300 transition-colors">Filosofía</a>
-            <a href="#zonas" className="hover:text-amber-300 transition-colors">Ambientes</a>
-            <a href="#reservas" className="hover:text-amber-300 transition-colors">Reservas</a>
+            <a href="#carta" className="hover:text-amber-300 transition-colors">{t.nav.menu}</a>
+            <a href="#filosofia" className="hover:text-amber-300 transition-colors">{t.nav.philosophy}</a>
+            <a href="#zonas" className="hover:text-amber-300 transition-colors">{t.nav.experience}</a>
+            <a href="#reservas" className="hover:text-amber-300 transition-colors">{t.nav.reserve}</a>
           </div>
 
-          <a 
-            href="#reservas" 
-            className="px-5 py-2.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-500 hover:text-black text-amber-200 text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(217,119,6,0.15)]"
-          >
-            Reservar Mesa
-          </a>
+          <div className="flex items-center gap-3">
+            {/* Language Switcher */}
+            <div className="flex items-center rounded-full bg-amber-950/40 border border-amber-500/30 p-0.5 text-[10px] font-mono font-semibold">
+              <button
+                onClick={() => setLang('en')}
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  lang === 'en'
+                    ? 'bg-amber-500 text-black font-bold shadow-sm'
+                    : 'text-amber-300/70 hover:text-amber-200'
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLang('es')}
+                className={`px-2.5 py-1 rounded-full transition-all ${
+                  lang === 'es'
+                    ? 'bg-amber-500 text-black font-bold shadow-sm'
+                    : 'text-amber-300/70 hover:text-amber-200'
+                }`}
+              >
+                ES
+              </button>
+            </div>
+
+            <a 
+              href="#reservas" 
+              className="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-500 hover:text-black text-amber-200 text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(217,119,6,0.15)] whitespace-nowrap"
+            >
+              {t.nav.reserve}
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -218,16 +262,16 @@ export default function App() {
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto mt-12 space-y-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-amber-500/30 bg-amber-950/40 text-amber-300 text-xs font-mono tracking-widest uppercase">
             <Award className="w-3.5 h-3.5" />
-            <span>Guía Gastronómica 2026 &mdash; Cocina de Autor</span>
+            <span>{t.hero.badge}</span>
           </div>
 
           <h1 className="text-5xl sm:text-7xl lg:text-8xl font-serif font-bold text-white tracking-tight leading-[1.1]">
-            El Arte de lo <br />
-            <span className="italic font-light text-amber-200/90">Trascendente.</span>
+            {t.hero.title1} <br />
+            <span className="italic font-light text-amber-200/90">{t.hero.title2}</span>
           </h1>
 
           <p className="text-base sm:text-lg text-zinc-300 max-w-2xl mx-auto font-light leading-relaxed">
-            Una inmersión sensorial en los sabores ancestrales de los Andes y el Pacífico ecuatoriano, esculpidos con técnica de vanguardia europea.
+            {t.hero.desc}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -235,29 +279,29 @@ export default function App() {
               href="#reservas" 
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-500 hover:bg-amber-400 text-black font-bold tracking-wider uppercase text-xs transition-all shadow-xl shadow-amber-950/40 flex items-center justify-center gap-2"
             >
-              <span>Asegurar Mesa VIP</span>
+              <span>{t.hero.ctaVip}</span>
               <ChevronRight className="w-4 h-4" />
             </a>
             <a 
               href="#carta" 
               className="w-full sm:w-auto px-8 py-4 rounded-full border border-zinc-700 hover:border-amber-500/50 bg-zinc-900/60 text-zinc-200 hover:text-white font-semibold tracking-wider uppercase text-xs transition-all"
             >
-              Explorar Carta
+              {t.hero.ctaMenu}
             </a>
           </div>
 
           <div className="pt-12 grid grid-cols-3 max-w-lg mx-auto border-t border-zinc-800/80 text-center">
             <div>
-              <span className="text-xl sm:text-2xl font-serif font-bold text-white block">9 Tiempos</span>
-              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">Menú Cronos</span>
+              <span className="text-xl sm:text-2xl font-serif font-bold text-white block">{t.hero.stat1Value}</span>
+              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">{t.hero.stat1Label}</span>
             </div>
             <div>
-              <span className="text-xl sm:text-2xl font-serif font-bold text-white block">180+</span>
-              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">Etiquetas Cava</span>
+              <span className="text-xl sm:text-2xl font-serif font-bold text-white block">{t.hero.stat2Value}</span>
+              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">{t.hero.stat2Label}</span>
             </div>
             <div>
-              <span className="text-xl sm:text-2xl font-serif font-bold text-white block">4.9 / 5.0</span>
-              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">Crítica Especializada</span>
+              <span className="text-xl sm:text-2xl font-serif font-bold text-white block">{t.hero.stat3Value}</span>
+              <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">{t.hero.stat3Label}</span>
             </div>
           </div>
         </div>
