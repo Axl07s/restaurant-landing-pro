@@ -39,5 +39,6 @@ KURE is a high-end web platform designed for the hospitality industry, featuring
 - **Language:** TypeScript
 
 <div align="center">
-  <i>Engineered for production by <a href="https://axel.dev">Axel Molineros</a>.</i>
+  <i>Engineered for production by <a href="https://github.com/Axl07s">Axel Molineros</a>.</i>
 </div>
+
