@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { 
   Clock, MapPin, Phone, Calendar, ChevronRight, Star, ChevronDown, 
-  CheckCircle2, Wine, Flame, Sparkles, X, Award, ShieldCheck, Copy
+  CheckCircle2, Wine, Flame, Sparkles, X, Award, ShieldCheck, Copy, Menu
 } from 'lucide-react';
 import { translations, type Language } from './translations';
 
@@ -126,6 +126,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // 3-Step Interactive Booking Engine State
   const [bookingStep, setBookingStep] = useState<1 | 2 | 3 | 4>(1);
@@ -239,12 +240,54 @@ export default function App() {
 
             <a 
               href="#reservas" 
-              className="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-500 hover:text-black text-amber-200 text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(217,119,6,0.15)] whitespace-nowrap"
+              className="hidden sm:inline-flex px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full border border-amber-500/40 bg-amber-950/30 hover:bg-amber-500 hover:text-black text-amber-200 text-[11px] sm:text-xs font-bold tracking-widest uppercase transition-all shadow-[0_0_20px_rgba(217,119,6,0.15)] whitespace-nowrap min-h-[44px] items-center"
             >
               {t.nav.reserve}
             </a>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-full border border-amber-500/30 bg-amber-950/40 text-amber-200 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
+              aria-label="Abrir menú"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#060403]/98 backdrop-blur-2xl border-b border-amber-950/60 px-6 py-6 space-y-4 animate-fadeIn shadow-2xl">
+            <div className="space-y-1">
+              {[
+                { href: '#carta', label: t.nav.menu },
+                { href: '#filosofia', label: t.nav.philosophy },
+                { href: '#zonas', label: t.nav.experience },
+                { href: '#reservas', label: t.nav.reserve },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center min-h-[48px] px-3 rounded-xl text-sm font-semibold tracking-widest uppercase text-zinc-300 hover:text-amber-300 hover:bg-amber-950/20 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <div className="pt-4 border-t border-amber-950/60 flex flex-col gap-3">
+              <a
+                href="#reservas"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full py-3.5 px-4 rounded-full text-center text-xs font-bold tracking-widest uppercase bg-amber-500 text-black min-h-[48px] flex items-center justify-center shadow-lg"
+              >
+                {t.nav.reserve}
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
