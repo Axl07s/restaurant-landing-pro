@@ -4,7 +4,20 @@
     @apply bg-white/5 backdrop-blur-md border border-white/10;
   }
 }
-body { background-color: #0a0605; color: #fdf8f6; overflow-x: hidden; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+body {
+  background-color: #0a0605;
+  color: #fdf8f6;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
 
 
 /* MOBILE PRO-MAX OPTIMIZATIONS */
@@ -14,6 +27,4 @@ body { background-color: #0a0605; color: #fdf8f6; overflow-x: hidden; }
 * {
   -webkit-tap-highlight-color: transparent;
 }
-html {
-  scroll-behavior: smooth;
-}
+

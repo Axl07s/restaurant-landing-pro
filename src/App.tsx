@@ -308,7 +308,7 @@ export default function App() {
             <span>{t.hero.badge}</span>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-serif font-bold text-white tracking-tight leading-[1.1]">
+          <h1 className="text-3xl sm:text-6xl lg:text-8xl font-serif font-bold text-white tracking-tight leading-[1.1]">
             {t.hero.title1} <br />
             <span className="italic font-light text-amber-200/90">{t.hero.title2}</span>
           </h1>
@@ -625,7 +625,7 @@ export default function App() {
 
       {/* 3-Step Interactive Booking Engine */}
       <section id="reservas" className="py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-        <div className="rounded-3xl border border-amber-500/30 bg-zinc-900/70 backdrop-blur-xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
+        <div className="rounded-3xl border border-amber-500/30 bg-zinc-900/70 backdrop-blur-xl p-5 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
           
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
